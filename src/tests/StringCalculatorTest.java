@@ -38,4 +38,13 @@ public class StringCalculatorTest {
         Assert.assertEquals(21, additionResult);
     }
 
+    @Test
+    public void AddWithDifferentDelimitersTest(){
+        int additionResult = stringCalculator.Add("//;\n1;2;3;4;5;6");
+        Assert.assertEquals(21, additionResult);
+
+        additionResult = stringCalculator.Add("//?\n1?2?3?4?5,6");
+        Assert.assertEquals(21, additionResult);
+    }
+
 }
