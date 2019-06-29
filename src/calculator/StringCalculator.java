@@ -2,7 +2,7 @@ package calculator;
 
 public class StringCalculator {
 
-    public int Add(String numbers) {
+    public int Add(String numbers) throws Exception {
         if (numbers.equals(""))
             return 0;
 
@@ -17,8 +17,13 @@ public class StringCalculator {
         String[] numbersArray = numbers.split(delimiterRegex);
         int result = 0;
         for (String number : numbersArray) {
+            if(Integer.parseInt(number) < 0) {
+                throw new Exception("Negative number not allowed" + number);
+            }
             result += Integer.parseInt(number);
         }
+
+
 
         return result;
     }
