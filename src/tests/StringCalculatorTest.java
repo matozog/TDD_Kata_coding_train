@@ -64,4 +64,11 @@ public class StringCalculatorTest {
         int additionResult = stringCalculator.Add("//;\n1;2;-3;4;-5;6");
     }
 
+    @Test
+    public void AddWithNumbersBiggerThan1000Test() throws Exception {
+        int additionResult = stringCalculator.Add("//;\n1;2;1000;1001;1500;5000");
+        Assert.assertEquals(1003, additionResult);
+
+    }
+
 }

@@ -17,13 +17,15 @@ public class StringCalculator {
         String[] numbersArray = numbers.split(delimiterRegex);
         StringBuilder negativeNumbers = new StringBuilder();
         boolean negativeFlag = false;
-        int result = 0;
+        int result = 0, actualNumber;
         for (String number : numbersArray) {
-            if(Integer.parseInt(number) < 0) {
+            actualNumber = Integer.parseInt(number);
+            if(actualNumber < 0) {
                 negativeFlag = true;
                 negativeNumbers.append(" " + number);
             }
-            result += Integer.parseInt(number);
+            if(actualNumber <= 1000)
+                result += actualNumber;
         }
 
         if(negativeFlag){
