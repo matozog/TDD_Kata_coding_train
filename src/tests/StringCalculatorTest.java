@@ -82,12 +82,18 @@ public class StringCalculatorTest {
     public void AddWithMultipleDelimitersTest() throws Exception{
         additionResult = stringCalculator.Add("//[*][%]\n1*2%3");
         Assert.assertEquals(6, additionResult);
+
+        additionResult = stringCalculator.Add("//[*][%][!]\n1*2%3!4");
+        Assert.assertEquals(10, additionResult);
     }
 
     @Test
     public void AddWithMultipleDelimitersAndManyCharsTest() throws Exception{
         additionResult = stringCalculator.Add("//[***][%%%]\n1***2%%%3");
         Assert.assertEquals(6, additionResult);
+
+        additionResult = stringCalculator.Add("//[***][%%%][...][?????]\n1***2%%%3...4?????5");
+        Assert.assertEquals(15, additionResult);
     }
 
 }
