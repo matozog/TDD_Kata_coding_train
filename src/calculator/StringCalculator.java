@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
+    private static String startDelimitersExpr = "//";
+    private static String endDelimitersExpr = "\n";
+    private static char startNewDelimiter = '[';
     private Pattern exprBetweenBracket = Pattern.compile("\\[(.*?)\\]");
     private ArrayList<String> delimiters = new ArrayList<>();
 
@@ -18,11 +21,11 @@ public class StringCalculator {
         if (numbers.equals(""))
             return 0;
 
-        if(numbers.length() > 2 && numbers.substring(0,2).equals("//")){
-            delimiter = numbers.substring(2, numbers.indexOf("\n"));
+        if(numbers.length() > 2 && numbers.substring(0,2).equals(startDelimitersExpr)){
+            delimiter = numbers.substring(2, numbers.indexOf(endDelimitersExpr));
             numbers = numbers.substring(3 + delimiter.length() ,numbers.length());
 
-            if(delimiter.charAt(0) == '['){
+            if(delimiter.charAt(0) == startNewDelimiter){
                 Matcher matcher = exprBetweenBracket.matcher(delimiter);
                 while(matcher.find()) {
                     delimiters.add(matcher.group(1));
@@ -32,6 +35,7 @@ public class StringCalculator {
             for(String delimit: delimiters){
                 numbers = numbers.replace(delimit, ",");
             }
+
             numbers = numbers.replace(delimiter, ",");
         }
 

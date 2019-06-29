@@ -84,4 +84,10 @@ public class StringCalculatorTest {
         Assert.assertEquals(6, additionResult);
     }
 
+    @Test
+    public void AddWithMultipleDelimitersAndManyCharsTest() throws Exception{
+        additionResult = stringCalculator.Add("//[***][%%%]\n1***2%%%3");
+        Assert.assertEquals(6, additionResult);
+    }
+
 }
