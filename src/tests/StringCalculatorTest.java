@@ -26,4 +26,10 @@ public class StringCalculatorTest {
         Assert.assertEquals(3, additionResult );
     }
 
+    @Test
+    public void AddManyNumbers(){
+        int additionResult = stringCalculator.Add("1,2,3,4,5,6");
+        Assert.assertEquals(21, additionResult);
+    }
+
 }
