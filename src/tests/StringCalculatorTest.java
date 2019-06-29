@@ -68,7 +68,12 @@ public class StringCalculatorTest {
     public void AddWithNumbersBiggerThan1000Test() throws Exception {
         int additionResult = stringCalculator.Add("//;\n1;2;1000;1001;1500;5000");
         Assert.assertEquals(1003, additionResult);
+    }
 
+    @Test
+    public void AddWithDifferentDelimiterLength() throws Exception{
+        int additionResult = stringCalculator.Add("//[***]\n1***2***3");
+        Assert.assertEquals(6, additionResult);
     }
 
 }

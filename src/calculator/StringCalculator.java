@@ -1,6 +1,11 @@
 package calculator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class StringCalculator {
+
+    private static ArrayList<String> operators = new ArrayList<String>(Arrays.asList("+", "*","^", "?"));
 
     public int Add(String numbers) throws Exception {
         if (numbers.equals(""))
@@ -11,6 +16,10 @@ public class StringCalculator {
         if(numbers.length() > 2 && numbers.substring(0,2).equals("//")){
             delimiter = numbers.substring(2, numbers.indexOf("\n"));
             numbers = numbers.substring(3 + delimiter.length() ,numbers.length());
+            if(delimiter.charAt(0) == '['){
+                delimiter = delimiter.substring(1, delimiter.indexOf(']'));
+            }
+            numbers = numbers.replace(delimiter, ",");
         }
 
         String delimiterRegex = "[ , | \\n | " + delimiter + "]";
@@ -22,7 +31,7 @@ public class StringCalculator {
             actualNumber = Integer.parseInt(number);
             if(actualNumber < 0) {
                 negativeFlag = true;
-                negativeNumbers.append(" " + number);
+                negativeNumbers.append(" ").append(number);
             }
             if(actualNumber <= 1000)
                 result += actualNumber;
