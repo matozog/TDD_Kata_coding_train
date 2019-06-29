@@ -27,8 +27,14 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void AddManyNumbers(){
+    public void AddManyNumbersTest(){
         int additionResult = stringCalculator.Add("1,2,3,4,5,6");
+        Assert.assertEquals(21, additionResult);
+    }
+
+    @Test
+    public void AddNewLinesDelimiterTest(){
+        int additionResult = stringCalculator.Add("1,2\n3,4,5\n6");
         Assert.assertEquals(21, additionResult);
     }
 
