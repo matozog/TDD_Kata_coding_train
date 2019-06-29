@@ -57,4 +57,11 @@ public class StringCalculatorTest {
         int additionResult = stringCalculator.Add("//;\n1;2;3;4;-5;6");
     }
 
+    @Test
+    public void AddWithExceptionManyNegativeNumbersTest() throws Exception {
+        exceptionRule.expect(Exception.class);
+        exceptionRule.expectMessage("Negative number not allowed -3 -5");
+        int additionResult = stringCalculator.Add("//;\n1;2;-3;4;-5;6");
+    }
+
 }

@@ -15,15 +15,20 @@ public class StringCalculator {
 
         String delimiterRegex = "[ , | \\n | " + delimiter + "]";
         String[] numbersArray = numbers.split(delimiterRegex);
+        StringBuilder negativeNumbers = new StringBuilder();
+        boolean negativeFlag = false;
         int result = 0;
         for (String number : numbersArray) {
             if(Integer.parseInt(number) < 0) {
-                throw new Exception("Negative number not allowed" + number);
+                negativeFlag = true;
+                negativeNumbers.append(" " + number);
             }
             result += Integer.parseInt(number);
         }
 
-
+        if(negativeFlag){
+            throw new Exception("Negative number not allowed" + negativeNumbers.toString());
+        }
 
         return result;
     }
